@@ -127,7 +127,7 @@ function logBlockedRequest(moduleName, req, referenceID, config5) {
   const url = req.url.replace(/(\n|\r|\v)/gi, "").replace(/"/g, "&quot;");
   const ua = req.ua.replace(/(\n|\r|\v)/gi, "").replace(/"/g, "&quot;");
   config5.customLogger.warn(
-    (!config5.dryMode ? "EasyWAF - Blocked:" : "EasyWAF DryMode - Blocked:") + " ip=" + (req.headers["x-real-ip"] || req.ip) + " module=" + moduleName + " time=" + (/* @__PURE__ */ new Date()).getTime() + ' url="' + url + '" ua="' + ua + '" method=' + req.method + " rid=" + referenceID
+    (!config5.dryMode ? "EasyWAF - Blocked:" : "EasyWAF DryMode - Blocked:") + " ip=" + (req.headers && req.headers.split(",") && req.headers.split(",")[1] || req.ip) + " module=" + moduleName + " time=" + (/* @__PURE__ */ new Date()).getTime() + ' url="' + url + '" ua="' + ua + '" method=' + req.method + " rid=" + referenceID
   );
 }
 

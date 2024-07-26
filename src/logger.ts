@@ -32,7 +32,7 @@ export function logBlockedRequest(moduleName: string, req: EasyWaf.Request, refe
     config.customLogger.warn(
         (!config.dryMode ? 'EasyWAF - Blocked:' : 'EasyWAF DryMode - Blocked:') +
             ' ip=' +
-            (req.headers['x-real-ip'] || req.ip) +
+            (req.headers && req.headers.split(',') && req.headers.split(',')[1] || req.ip) +
             ' module=' +
             moduleName +
             ' time=' +
