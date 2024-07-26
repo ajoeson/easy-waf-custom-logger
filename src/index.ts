@@ -10,6 +10,7 @@ import type { IncomingMessage } from 'http';
 let config: EasyWaf.Config = {
     dryMode: false,
     disableLogging: false,
+    customLogger: null,
     modules: {
         blockTorExitNodes: {
             enabled: false,

@@ -47,6 +47,8 @@ export namespace EasyWaf {
          */
         // eslint-disable-next-line @typescript-eslint/ban-types
         trustProxy?: string | string[] | Function | boolean | number;
+
+        customLogger?: any;
     };
 
     type ConfigModules = {

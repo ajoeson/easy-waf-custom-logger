@@ -29,10 +29,10 @@ export function logBlockedRequest(moduleName: string, req: EasyWaf.Request, refe
     const url = req.url.replace(/(\n|\r|\v)/gi, '').replace(/"/g, '&quot;');
     const ua = req.ua.replace(/(\n|\r|\v)/gi, '').replace(/"/g, '&quot;');
 
-    console.warn(
+    config.customLogger.warn(
         (!config.dryMode ? 'EasyWAF - Blocked:' : 'EasyWAF DryMode - Blocked:') +
             ' ip=' +
-            req.ip +
+            (req.headers['x-real-ip'] || req.ip) +
             ' module=' +
             moduleName +
             ' time=' +
